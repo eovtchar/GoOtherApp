@@ -7,10 +7,10 @@ import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.view.View;
 import android.widget.EditText;
+import java.util.Calendar;
 
 import org.apache.http.protocol.HTTP;
 
-import java.util.Calendar;
 
 
 public class MainActivity extends Activity {
@@ -53,29 +53,25 @@ public class MainActivity extends Activity {
         startActivity(emailIntent);
     }
 
-    /*public void AddCalendar (View view)
+    public void addCalendar (View view)
     {
-        Intent calendarIntent = new Intent(Intent.ACTION_INSERT,CalendarContract.Events.CONTENT_URI);
-        //Calendar beginTime = Calendar.getInstance().set(2012, 0, 19, 7, 30);
-        //Calendar beginTime = CalendarContract.getInstance().set(2015,07,07);
-
-        //Calendar endTime = Calendar.getInstance().set(201, 0, 19, 10, 30);
-        //calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis());
-        calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
-
+        Intent calendarIntent = new Intent(Intent.ACTION_INSERT, CalendarContract.Events.CONTENT_URI);
+        Calendar beginTime = Calendar.getInstance();
+        beginTime.set(2015,7,7);
+        Calendar endTime = Calendar.getInstance();
+        endTime.set(2015,7,8);
+        calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis());
         calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis());
         calendarIntent.putExtra(CalendarContract.Events.TITLE, "Ninja class");
         calendarIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, "Secret dojo");
-    }*/
+        startActivity(calendarIntent);
+    }
 
     public void callNumber(View view)
     {
-        //posted_by = "111-333-222-4";
         number = editTextCallNumber.getText().toString();
-        //String uri = "tel:" + posted_by.trim() ;
         String uri = "tel:" +  number.trim();
         Intent intentCall = new Intent(Intent.ACTION_DIAL);
-        //intentCall.setData(Uri.parse(uri));
         intentCall.setData(Uri.parse(uri));
         startActivity(intentCall);
 
